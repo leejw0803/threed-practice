@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import Insights from "./components/Insights";
 //import {OrbitControls} from '@react-three/drei';
 
 function Box(props) {
@@ -22,7 +23,7 @@ function Box(props) {
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}
     >
-      <boxGeometry args={[2, 2, 2]} />
+      <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
     </mesh>
   );
@@ -31,12 +32,14 @@ function Box(props) {
 export default function Meshes() {
   return (
     <>
-      <Canvas style={{ height: "100vh" }}>
-        <ambientLight />
+      <Canvas style={{ height: "50vh" }}>
         <pointLight position={[10, 10, 10]} />
+        <ambientLight />
         <Box position={[-3, 0, 0]} />
         <Box position={[3, 0, 0]} />
       </Canvas>
+
+      <Insights />
     </>
   );
 }
